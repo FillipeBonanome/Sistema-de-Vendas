@@ -1,4 +1,4 @@
-package br.com.incarnia.Sistema.de.Vendas.infra.controllers;
+package br.com.incarnia.Sistema.de.Vendas.infra.controllers.user;
 
 import br.com.incarnia.Sistema.de.Vendas.application.usecases.user.create.CreateUserImplementation;
 import br.com.incarnia.Sistema.de.Vendas.application.usecases.user.read.ReadUserImplementation;

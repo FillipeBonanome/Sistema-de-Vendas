@@ -1,6 +1,5 @@
-package br.com.incarnia.Sistema.de.Vendas.infra.controllers;
+package br.com.incarnia.Sistema.de.Vendas.infra.controllers.user;
 import br.com.incarnia.Sistema.de.Vendas.core.domain.Address;
-import br.com.incarnia.Sistema.de.Vendas.core.domain.UserRole;
 
 public record CreateUserRequest(
         String name,

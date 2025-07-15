@@ -20,6 +20,12 @@ public class UserRepositoryGateway implements UserGateway {
 
     @Override
     public User createUser(User user) {
+        Optional<UserEntity> existingEmailEntity = userRepository.findByEmail(user.getEmail());
+
+        if (existingEmailEntity.isPresent()) {
+            throw new UserException("User with email " + user.getEmail() + " already registered");
+        }
+
         UserEntity userEntity = userEntityMapper.toEntity(user);
         UserEntity savedEntity = userRepository.save(userEntity);
         return userEntityMapper.toDomain(savedEntity);
