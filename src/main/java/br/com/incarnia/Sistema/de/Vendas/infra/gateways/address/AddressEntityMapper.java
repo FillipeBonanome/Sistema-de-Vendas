@@ -1,4 +1,4 @@
-package br.com.incarnia.Sistema.de.Vendas.infra.gateways;
+package br.com.incarnia.Sistema.de.Vendas.infra.gateways.address;
 
 import br.com.incarnia.Sistema.de.Vendas.core.domain.Address;
 import br.com.incarnia.Sistema.de.Vendas.infra.persistence.AddressEntity;

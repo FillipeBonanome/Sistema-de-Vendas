@@ -1,4 +1,4 @@
-package br.com.incarnia.Sistema.de.Vendas.infra.gateways;
+package br.com.incarnia.Sistema.de.Vendas.infra.gateways.user;
 
 import br.com.incarnia.Sistema.de.Vendas.application.gateways.UserGateway;
 import br.com.incarnia.Sistema.de.Vendas.core.domain.User;

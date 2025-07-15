@@ -1,6 +1,6 @@
 package br.com.incarnia.Sistema.de.Vendas.config.beans;
 
-import br.com.incarnia.Sistema.de.Vendas.infra.gateways.AddressEntityMapper;
+import br.com.incarnia.Sistema.de.Vendas.infra.gateways.address.AddressEntityMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
