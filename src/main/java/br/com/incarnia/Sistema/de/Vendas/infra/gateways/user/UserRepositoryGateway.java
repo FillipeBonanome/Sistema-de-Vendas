@@ -5,6 +5,8 @@ import br.com.incarnia.Sistema.de.Vendas.core.domain.User;
 import br.com.incarnia.Sistema.de.Vendas.core.exceptions.UserException;
 import br.com.incarnia.Sistema.de.Vendas.infra.persistence.UserEntity;
 import br.com.incarnia.Sistema.de.Vendas.infra.persistence.UserRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.Optional;
 
@@ -46,5 +48,11 @@ public class UserRepositoryGateway implements UserGateway {
         }
 
         return userEntityMapper.toDomain(userEntity);
+    }
+
+    @Override
+    public Page<User> findAll(Pageable pageable) {
+        Page<UserEntity> userEntityPage = userRepository.findAll(pageable);
+        return userEntityPage.map(userEntityMapper::toDomain);
     }
 }

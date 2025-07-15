@@ -3,6 +3,7 @@ package br.com.incarnia.Sistema.de.Vendas.config.beans;
 import br.com.incarnia.Sistema.de.Vendas.application.gateways.UserGateway;
 import br.com.incarnia.Sistema.de.Vendas.application.usecases.user.create.CreateUserImplementation;
 import br.com.incarnia.Sistema.de.Vendas.application.usecases.user.read.ReadUserImplementation;
+import br.com.incarnia.Sistema.de.Vendas.application.usecases.user.readall.ReadAllUserImplementation;
 import br.com.incarnia.Sistema.de.Vendas.infra.controllers.user.UserDTOMapper;
 import br.com.incarnia.Sistema.de.Vendas.infra.gateways.address.AddressEntityMapper;
 import br.com.incarnia.Sistema.de.Vendas.infra.gateways.user.UserEntityMapper;
@@ -22,6 +23,11 @@ public class UserConfig {
     @Bean
     public ReadUserImplementation readUserImplementation(UserGateway userGateway) {
         return new ReadUserImplementation(userGateway);
+    }
+
+    @Bean
+    public ReadAllUserImplementation readAllUserImplementation(UserGateway userGateway) {
+        return new ReadAllUserImplementation(userGateway);
     }
 
     @Bean
