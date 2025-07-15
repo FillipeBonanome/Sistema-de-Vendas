@@ -2,6 +2,8 @@ package br.com.incarnia.Sistema.de.Vendas.core.domain;
 
 import br.com.incarnia.Sistema.de.Vendas.core.exceptions.AddressException;
 
+import java.util.Objects;
+
 public class Address {
     private String street;
     private String number;
@@ -107,5 +109,18 @@ public class Address {
 
     public void setComplement(String complement) {
         this.complement = complement;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return Objects.equals(street, address.street) && Objects.equals(number, address.number) && Objects.equals(neighborhood, address.neighborhood) && Objects.equals(city, address.city) && Objects.equals(state, address.state) && Objects.equals(CEP, address.CEP) && Objects.equals(complement, address.complement);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(street, number, neighborhood, city, state, CEP, complement);
     }
 }

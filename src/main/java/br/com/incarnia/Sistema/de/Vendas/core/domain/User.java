@@ -44,8 +44,12 @@ public class User {
     }
 
     public void setName(String name) {
-        if (name == null || name.isBlank()) {
-            throw new UserException("User name cannot be null or blank");
+        if (name == null) {
+            throw new UserException("User name cannot be null");
+        }
+
+        if(name.isBlank()) {
+            throw new UserException("User name cannot be blank");
         }
 
         if (name.length() < 2) {
@@ -82,8 +86,12 @@ public class User {
 
     public void setPassword(String password) {
 
-        if (password == null || password.isBlank()) {
-            throw new UserException("User password cannot be null or blank");
+        if (password == null) {
+            throw new UserException("User password cannot be null");
+        }
+
+        if (password.isBlank()) {
+            throw new UserException("User password cannot be blank");
         }
 
         if (password.length() < 8) {
@@ -131,7 +139,11 @@ public class User {
 
         cpf = cpf.replaceAll("[^\\d]", "");
 
-        if (cpf.length() != 11 || !cpf.matches("\\d+")) {
+        if (!cpf.matches("\\d+")) {
+            throw new UserException("User CPF with invalid format");
+        }
+
+        if(cpf.length() != 11) {
             throw new UserException("User CPF with invalid format");
         }
 
@@ -163,6 +175,11 @@ public class User {
     }
 
     public void setUserRole(UserRole userRole) {
+
+        if (userRole == null) {
+            throw new UserException("User role cannot be null");
+        }
+
         this.userRole = userRole;
     }
 
