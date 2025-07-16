@@ -2,6 +2,7 @@ package br.com.incarnia.Sistema.de.Vendas.core.domain;
 
 import br.com.incarnia.Sistema.de.Vendas.core.exceptions.MenuException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Menu {
@@ -10,7 +11,7 @@ public class Menu {
     private String name;
     private String description;
     private Restaurant restaurant;
-    private List<MenuItem> menuItems;
+    private List<MenuItem> menuItems = new ArrayList<>();
 
     public Menu() { }
 
@@ -48,6 +49,10 @@ public class Menu {
             throw new MenuException("Menu name length cannot be less than 4");
         }
 
+        if(name.length() > 16) {
+            throw new MenuException("Menu name length cannot be larger than 16");
+        }
+
         this.name = name;
     }
 
@@ -71,6 +76,11 @@ public class Menu {
     }
 
     public void setRestaurant(Restaurant restaurant) {
+
+        if(restaurant == null) {
+            throw new MenuException("Menu cannot be affiliated with a null restaurant");
+        }
+
         this.restaurant = restaurant;
     }
 
