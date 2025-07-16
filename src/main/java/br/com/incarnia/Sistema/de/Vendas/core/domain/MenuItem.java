@@ -48,6 +48,10 @@ public class MenuItem {
             throw new MenuItemException("Menu item name length cannot be less than 3");
         }
 
+        if (name.length() > 16) {
+            throw new MenuItemException("Menu item name length cannot be larger than 16");
+        }
+
         this.name = name;
     }
 
