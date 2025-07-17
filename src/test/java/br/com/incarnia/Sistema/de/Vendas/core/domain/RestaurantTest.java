@@ -81,6 +81,13 @@ class RestaurantTest {
     }
 
     @Test
+    @DisplayName("Should throw exception when menus is null")
+    public void shouldThrowExceptionWhenMenusIsNull() {
+        Restaurant restaurant = new Restaurant();
+        assertThrows(RestaurantException.class, () -> restaurant.setMenus(null));
+    }
+
+    @Test
     @DisplayName("Should throw exception when address is null")
     public void shouldThrowExceptionWhenAddressIsNull() {
         Restaurant restaurant = new Restaurant();
