@@ -1,4 +1,4 @@
-package br.com.incarnia.Sistema.de.Vendas.infra.persistence;
+package br.com.incarnia.Sistema.de.Vendas.infra.persistence.address;
 
 import jakarta.persistence.Embeddable;
 

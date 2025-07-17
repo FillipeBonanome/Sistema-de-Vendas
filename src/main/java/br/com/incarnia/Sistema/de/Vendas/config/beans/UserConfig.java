@@ -8,7 +8,7 @@ import br.com.incarnia.Sistema.de.Vendas.infra.controllers.user.UserDTOMapper;
 import br.com.incarnia.Sistema.de.Vendas.infra.gateways.address.AddressEntityMapper;
 import br.com.incarnia.Sistema.de.Vendas.infra.gateways.user.UserEntityMapper;
 import br.com.incarnia.Sistema.de.Vendas.infra.gateways.user.UserRepositoryGateway;
-import br.com.incarnia.Sistema.de.Vendas.infra.persistence.UserRepository;
+import br.com.incarnia.Sistema.de.Vendas.infra.persistence.user.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

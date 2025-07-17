@@ -1,7 +1,6 @@
 package br.com.incarnia.Sistema.de.Vendas.core.domain;
 
 import br.com.incarnia.Sistema.de.Vendas.core.exceptions.UserException;
-import br.com.incarnia.Sistema.de.Vendas.infra.persistence.UserEntity;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

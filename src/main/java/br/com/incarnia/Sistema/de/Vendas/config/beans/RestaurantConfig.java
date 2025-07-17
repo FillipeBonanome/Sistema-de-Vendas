@@ -5,9 +5,10 @@ import br.com.incarnia.Sistema.de.Vendas.application.usecases.restaurant.create.
 import br.com.incarnia.Sistema.de.Vendas.application.usecases.restaurant.read.ReadRestaurantImplementation;
 import br.com.incarnia.Sistema.de.Vendas.infra.controllers.restaurant.RestaurantDTOMapper;
 import br.com.incarnia.Sistema.de.Vendas.infra.gateways.address.AddressEntityMapper;
+import br.com.incarnia.Sistema.de.Vendas.infra.gateways.menu.MenuEntityMapper;
 import br.com.incarnia.Sistema.de.Vendas.infra.gateways.restaurant.RestaurantEntityMapper;
 import br.com.incarnia.Sistema.de.Vendas.infra.gateways.restaurant.RestaurantRepositoryGateway;
-import br.com.incarnia.Sistema.de.Vendas.infra.persistence.UserRepository;
+import br.com.incarnia.Sistema.de.Vendas.infra.persistence.user.UserRepository;
 import br.com.incarnia.Sistema.de.Vendas.infra.persistence.restaurant.RestaurantRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

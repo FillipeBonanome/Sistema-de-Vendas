@@ -1,6 +1,7 @@
 package br.com.incarnia.Sistema.de.Vendas.config.exceptions;
 
 import br.com.incarnia.Sistema.de.Vendas.core.exceptions.AddressException;
+import br.com.incarnia.Sistema.de.Vendas.core.exceptions.MenuException;
 import br.com.incarnia.Sistema.de.Vendas.core.exceptions.RestaurantException;
 import br.com.incarnia.Sistema.de.Vendas.core.exceptions.UserException;
 import org.springframework.http.HttpStatus;
@@ -38,6 +39,18 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(RestaurantException.class)
     public ResponseEntity<ErrorResponse> handleRestaurantException(RestaurantException exception) {
+        return ResponseEntity.badRequest().body(
+                new ErrorResponse(
+                        LocalDateTime.now(),
+                        HttpStatus.BAD_REQUEST.value(),
+                        "Error",
+                        exception.getMessage()
+                )
+        );
+    }
+
+    @ExceptionHandler(MenuException.class)
+    public ResponseEntity<ErrorResponse> handleMenuException(MenuException exception) {
         return ResponseEntity.badRequest().body(
                 new ErrorResponse(
                         LocalDateTime.now(),

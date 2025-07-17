@@ -3,8 +3,8 @@ package br.com.incarnia.Sistema.de.Vendas.infra.gateways.user;
 import br.com.incarnia.Sistema.de.Vendas.core.domain.Address;
 import br.com.incarnia.Sistema.de.Vendas.core.domain.User;
 import br.com.incarnia.Sistema.de.Vendas.infra.gateways.address.AddressEntityMapper;
-import br.com.incarnia.Sistema.de.Vendas.infra.persistence.AddressEntity;
-import br.com.incarnia.Sistema.de.Vendas.infra.persistence.UserEntity;
+import br.com.incarnia.Sistema.de.Vendas.infra.persistence.address.AddressEntity;
+import br.com.incarnia.Sistema.de.Vendas.infra.persistence.user.UserEntity;
 
 public class UserEntityMapper {
 

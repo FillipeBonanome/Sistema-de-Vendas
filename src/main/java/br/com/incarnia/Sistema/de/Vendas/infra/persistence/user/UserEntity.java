@@ -1,6 +1,7 @@
-package br.com.incarnia.Sistema.de.Vendas.infra.persistence;
+package br.com.incarnia.Sistema.de.Vendas.infra.persistence.user;
 
 import br.com.incarnia.Sistema.de.Vendas.core.domain.UserRole;
+import br.com.incarnia.Sistema.de.Vendas.infra.persistence.address.AddressEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 

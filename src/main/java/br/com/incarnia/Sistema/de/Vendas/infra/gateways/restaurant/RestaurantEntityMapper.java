@@ -1,16 +1,19 @@
 package br.com.incarnia.Sistema.de.Vendas.infra.gateways.restaurant;
 
 import br.com.incarnia.Sistema.de.Vendas.core.domain.Address;
+import br.com.incarnia.Sistema.de.Vendas.core.domain.Menu;
 import br.com.incarnia.Sistema.de.Vendas.core.domain.Restaurant;
 import br.com.incarnia.Sistema.de.Vendas.infra.gateways.address.AddressEntityMapper;
-import br.com.incarnia.Sistema.de.Vendas.infra.persistence.AddressEntity;
+import br.com.incarnia.Sistema.de.Vendas.infra.gateways.menu.MenuEntityMapper;
+import br.com.incarnia.Sistema.de.Vendas.infra.persistence.address.AddressEntity;
+import br.com.incarnia.Sistema.de.Vendas.infra.persistence.menu.MenuEntity;
 import br.com.incarnia.Sistema.de.Vendas.infra.persistence.restaurant.RestaurantEntity;
 
 import java.util.ArrayList;
 
 public class RestaurantEntityMapper {
 
-    private AddressEntityMapper addressEntityMapper;
+    private final AddressEntityMapper addressEntityMapper;
 
     public RestaurantEntityMapper(AddressEntityMapper addressEntityMapper) {
         this.addressEntityMapper = addressEntityMapper;
@@ -26,8 +29,14 @@ public class RestaurantEntityMapper {
                 restaurant.getPhoneNumber(),
                 restaurant.getCNPJ(),
                 restaurant.getDeliveryFee(),
-                restaurant.getDeliveryTime()
-        );                                  //TODO --> add menus
+                restaurant.getDeliveryTime(),
+                restaurant.getMenus().stream().map(m -> new MenuEntity(
+                       m.getId(),
+                        m.getName(),
+                        m.getDescription(),
+                        new RestaurantEntity()                  //TODO --> REMOVE GAMBIARRA
+                )).toList()
+        );
     }
 
     public Restaurant toDomain(RestaurantEntity restaurantEntity) {
@@ -41,7 +50,13 @@ public class RestaurantEntityMapper {
                 restaurantEntity.getCNPJ(),
                 restaurantEntity.getDeliveryFee(),
                 restaurantEntity.getDeliveryTime(),
-                new ArrayList<>()           //TODO --> add menus
+                restaurantEntity.getMenus().stream().map(m -> new Menu(
+                            m.getId(),
+                            m.getName(),
+                            m.getDescription(),
+                            new Restaurant(),
+                            new ArrayList<>()
+                    )).toList()
         );
     }
 

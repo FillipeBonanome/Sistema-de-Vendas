@@ -1,12 +1,13 @@
 package br.com.incarnia.Sistema.de.Vendas.infra.persistence.restaurant;
 
-import br.com.incarnia.Sistema.de.Vendas.core.domain.Address;
-import br.com.incarnia.Sistema.de.Vendas.core.domain.Menu;
-import br.com.incarnia.Sistema.de.Vendas.infra.persistence.AddressEntity;
+import br.com.incarnia.Sistema.de.Vendas.infra.persistence.address.AddressEntity;
+import br.com.incarnia.Sistema.de.Vendas.infra.persistence.menu.MenuEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 //TODO --> add menus
 @Entity
@@ -31,11 +32,13 @@ public class RestaurantEntity {
     private String CNPJ;
     private BigDecimal deliveryFee;
     private Integer deliveryTime;
-    //private List<Menu> menus = new ArrayList<>();
+
+    @OneToMany(mappedBy = "restaurantEntity", cascade = CascadeType.ALL)
+    private List<MenuEntity> menus = new ArrayList<>();
 
     public RestaurantEntity() { }
 
-    public RestaurantEntity(Long id, String name, String description, AddressEntity address, String phoneNumber, String CNPJ, BigDecimal deliveryFee, Integer deliveryTime) {
+    public RestaurantEntity(Long id, String name, String description, AddressEntity address, String phoneNumber, String CNPJ, BigDecimal deliveryFee, Integer deliveryTime, List<MenuEntity> menuEntityList) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -44,6 +47,7 @@ public class RestaurantEntity {
         this.CNPJ = CNPJ;
         this.deliveryFee = deliveryFee;
         this.deliveryTime = deliveryTime;
+        this.menus = menuEntityList;
     }
 
     public Long getId() {
@@ -109,4 +113,13 @@ public class RestaurantEntity {
     public void setDeliveryTime(Integer deliveryTime) {
         this.deliveryTime = deliveryTime;
     }
+
+    public List<MenuEntity> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<MenuEntity> menus) {
+        this.menus = menus;
+    }
+
 }

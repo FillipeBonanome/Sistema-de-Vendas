@@ -213,6 +213,11 @@ public class Restaurant {
     }
 
     public void setMenus(List<Menu> menus) {
+
+        if(menus == null) {
+            throw new RestaurantException("Restaurant menus can'1t be null");
+        }
+
         this.menus = menus;
     }
 

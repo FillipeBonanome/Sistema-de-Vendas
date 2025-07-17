@@ -3,8 +3,7 @@ package br.com.incarnia.Sistema.de.Vendas.infra.gateways.restaurant;
 import br.com.incarnia.Sistema.de.Vendas.application.gateways.RestaurantGateway;
 import br.com.incarnia.Sistema.de.Vendas.core.domain.Restaurant;
 import br.com.incarnia.Sistema.de.Vendas.core.exceptions.RestaurantException;
-import br.com.incarnia.Sistema.de.Vendas.infra.persistence.UserEntity;
-import br.com.incarnia.Sistema.de.Vendas.infra.persistence.UserRepository;
+import br.com.incarnia.Sistema.de.Vendas.infra.persistence.user.UserRepository;
 import br.com.incarnia.Sistema.de.Vendas.infra.persistence.restaurant.RestaurantEntity;
 import br.com.incarnia.Sistema.de.Vendas.infra.persistence.restaurant.RestaurantRepository;
 
@@ -38,6 +37,7 @@ public class RestaurantRepositoryGateway implements RestaurantGateway {
         }
 
         RestaurantEntity restaurantEntity = restaurantOptional.get();
+        System.out.println(restaurantEntity.getMenus());
         return restaurantEntityMapper.toDomain(restaurantEntity);
     }
 }

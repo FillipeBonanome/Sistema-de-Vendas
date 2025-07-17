@@ -1,0 +1,20 @@
+package br.com.incarnia.Sistema.de.Vendas.infra.controllers.restaurant;
+
+import br.com.incarnia.Sistema.de.Vendas.core.domain.Address;
+import br.com.incarnia.Sistema.de.Vendas.infra.controllers.menu.ReadMenuResponse;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+public record ReadRestaurantResponse(
+        Long id,
+        String name,
+        String description,
+        Address address,
+        String phoneNumber,
+        String CNPJ,
+        BigDecimal deliveryFee,
+        Integer deliveryTime,
+        List<ReadMenuResponse> menus            //TODO --> Use DTO for menus
+) {
+}

@@ -3,8 +3,8 @@ package br.com.incarnia.Sistema.de.Vendas.infra.gateways.user;
 import br.com.incarnia.Sistema.de.Vendas.application.gateways.UserGateway;
 import br.com.incarnia.Sistema.de.Vendas.core.domain.User;
 import br.com.incarnia.Sistema.de.Vendas.core.exceptions.UserException;
-import br.com.incarnia.Sistema.de.Vendas.infra.persistence.UserEntity;
-import br.com.incarnia.Sistema.de.Vendas.infra.persistence.UserRepository;
+import br.com.incarnia.Sistema.de.Vendas.infra.persistence.user.UserEntity;
+import br.com.incarnia.Sistema.de.Vendas.infra.persistence.user.UserRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

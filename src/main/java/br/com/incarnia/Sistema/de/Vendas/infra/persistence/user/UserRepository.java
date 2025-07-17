@@ -1,4 +1,4 @@
-package br.com.incarnia.Sistema.de.Vendas.infra.persistence;
+package br.com.incarnia.Sistema.de.Vendas.infra.persistence.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

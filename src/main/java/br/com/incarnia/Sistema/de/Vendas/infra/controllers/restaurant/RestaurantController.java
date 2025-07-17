@@ -29,9 +29,9 @@ public class RestaurantController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CreateRestaurantResponse> findById(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<ReadRestaurantResponse> findById(@PathVariable(name = "id") Long id) {
         Restaurant restaurant = readRestaurantImplementation.findById(id);
-        return ResponseEntity.ok(restaurantDTOMapper.toResponse(restaurant));
+        return ResponseEntity.ok(restaurantDTOMapper.toReadResponse(restaurant));
     }
 
 }

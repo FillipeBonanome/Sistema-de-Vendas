@@ -1,7 +1,7 @@
 package br.com.incarnia.Sistema.de.Vendas.infra.gateways.address;
 
 import br.com.incarnia.Sistema.de.Vendas.core.domain.Address;
-import br.com.incarnia.Sistema.de.Vendas.infra.persistence.AddressEntity;
+import br.com.incarnia.Sistema.de.Vendas.infra.persistence.address.AddressEntity;
 
 public class AddressEntityMapper {
 
