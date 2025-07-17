@@ -37,7 +37,6 @@ public class RestaurantRepositoryGateway implements RestaurantGateway {
         }
 
         RestaurantEntity restaurantEntity = restaurantOptional.get();
-        System.out.println(restaurantEntity.getMenus());
         return restaurantEntityMapper.toDomain(restaurantEntity);
     }
 }

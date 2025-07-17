@@ -224,7 +224,6 @@ class UserTest {
                 UserRole.CLIENT,
                 false
         ));
-        System.out.println(exception.getMessage());
     }
 
     @Test
@@ -242,8 +241,6 @@ class UserTest {
                 false
         ));
 
-        System.out.println("Invalid length?");
-        System.out.println(exception.getMessage());
     }
 
     @Test
