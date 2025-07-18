@@ -15,6 +15,6 @@ public record ReadRestaurantResponse(
         String CNPJ,
         BigDecimal deliveryFee,
         Integer deliveryTime,
-        List<ReadMenuResponse> menus            //TODO --> Use DTO for menus
+        List<ReadMenuResponse> menus
 ) {
 }

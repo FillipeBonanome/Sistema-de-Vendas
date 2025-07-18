@@ -4,6 +4,7 @@ import br.com.incarnia.Sistema.de.Vendas.core.domain.Address;
 import br.com.incarnia.Sistema.de.Vendas.core.domain.Restaurant;
 import br.com.incarnia.Sistema.de.Vendas.core.exceptions.UserException;
 import br.com.incarnia.Sistema.de.Vendas.infra.controllers.menu.ReadMenuResponse;
+import br.com.incarnia.Sistema.de.Vendas.infra.controllers.menuitem.ReadMenuItemResponse;
 
 public class RestaurantDTOMapper {
 
@@ -17,7 +18,16 @@ public class RestaurantDTOMapper {
                 restaurant.getCNPJ(),
                 restaurant.getDeliveryFee(),
                 restaurant.getDeliveryTime(),
-                restaurant.getMenus()
+                restaurant.getMenus().stream().map(m -> new ReadMenuResponse(
+                        m.getId(),
+                        m.getName(),
+                        m.getDescription(),
+                        m.getMenuItems().stream().map( i -> new ReadMenuItemResponse(
+                                i.getName(),
+                                i.getDescription(),
+                                i.getPrice()
+                        )).toList()
+                )).toList()
         );
     }
 
@@ -32,8 +42,14 @@ public class RestaurantDTOMapper {
                 restaurant.getDeliveryFee(),
                 restaurant.getDeliveryTime(),
                 restaurant.getMenus().stream().map(m -> new ReadMenuResponse(
+                        m.getId(),
                         m.getName(),
-                        m.getDescription()
+                        m.getDescription(),
+                        m.getMenuItems().stream().map(i -> new ReadMenuItemResponse(
+                                i.getName(),
+                                i.getDescription(),
+                                i.getPrice()
+                        )).toList()
                 )).toList()
         );
     }

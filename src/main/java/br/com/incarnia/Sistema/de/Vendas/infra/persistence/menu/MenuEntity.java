@@ -2,6 +2,7 @@ package br.com.incarnia.Sistema.de.Vendas.infra.persistence.menu;
 
 import br.com.incarnia.Sistema.de.Vendas.core.domain.MenuItem;
 import br.com.incarnia.Sistema.de.Vendas.core.domain.Restaurant;
+import br.com.incarnia.Sistema.de.Vendas.infra.persistence.menuitem.MenuItemEntity;
 import br.com.incarnia.Sistema.de.Vendas.infra.persistence.restaurant.RestaurantEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -24,15 +25,18 @@ public class MenuEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
     private RestaurantEntity restaurantEntity;
-    //private List<MenuItem> menuItems = new ArrayList<>(); TODO --> add menu item
+
+    @OneToMany(mappedBy = "menuEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<MenuItemEntity> menuItemEntityList = new ArrayList<>();
 
     public MenuEntity() {}
 
-    public MenuEntity(Long id, String name, String description, RestaurantEntity restaurantEntity) {
+    public MenuEntity(Long id, String name, String description, RestaurantEntity restaurantEntity, List<MenuItemEntity> menuItemEntityList) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.restaurantEntity = restaurantEntity;
+        this.menuItemEntityList = menuItemEntityList;
     }
 
     public Long getId() {
@@ -65,5 +69,13 @@ public class MenuEntity {
 
     public void setRestaurantEntity(RestaurantEntity restaurantEntity) {
         this.restaurantEntity = restaurantEntity;
+    }
+
+    public List<MenuItemEntity> getMenuItemEntityList() {
+        return menuItemEntityList;
+    }
+
+    public void setMenuItemEntityList(List<MenuItemEntity> menuItemEntityList) {
+        this.menuItemEntityList = menuItemEntityList;
     }
 }

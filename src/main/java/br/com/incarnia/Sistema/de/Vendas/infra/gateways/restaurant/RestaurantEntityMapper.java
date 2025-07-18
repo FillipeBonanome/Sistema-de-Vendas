@@ -2,11 +2,13 @@ package br.com.incarnia.Sistema.de.Vendas.infra.gateways.restaurant;
 
 import br.com.incarnia.Sistema.de.Vendas.core.domain.Address;
 import br.com.incarnia.Sistema.de.Vendas.core.domain.Menu;
+import br.com.incarnia.Sistema.de.Vendas.core.domain.MenuItem;
 import br.com.incarnia.Sistema.de.Vendas.core.domain.Restaurant;
 import br.com.incarnia.Sistema.de.Vendas.infra.gateways.address.AddressEntityMapper;
 import br.com.incarnia.Sistema.de.Vendas.infra.gateways.menu.MenuEntityMapper;
 import br.com.incarnia.Sistema.de.Vendas.infra.persistence.address.AddressEntity;
 import br.com.incarnia.Sistema.de.Vendas.infra.persistence.menu.MenuEntity;
+import br.com.incarnia.Sistema.de.Vendas.infra.persistence.menuitem.MenuItemEntity;
 import br.com.incarnia.Sistema.de.Vendas.infra.persistence.restaurant.RestaurantEntity;
 
 import java.util.ArrayList;
@@ -34,7 +36,14 @@ public class RestaurantEntityMapper {
                        m.getId(),
                         m.getName(),
                         m.getDescription(),
-                        new RestaurantEntity()                  //TODO --> REMOVE GAMBIARRA
+                        new RestaurantEntity(),                     //TODO --> REMOVE GAMBIARRA
+                        m.getMenuItems().stream().map(i -> new MenuItemEntity(
+                                i.getId(),
+                                i.getName(),
+                                i.getDescription(),
+                                i.getPrice(),
+                                new MenuEntity()
+                        )).toList()
                 )).toList()
         );
     }
@@ -55,7 +64,13 @@ public class RestaurantEntityMapper {
                             m.getName(),
                             m.getDescription(),
                             new Restaurant(),
-                            new ArrayList<>()
+                            m.getMenuItemEntityList().stream().map(i -> new MenuItem(
+                                    i.getId(),
+                                    i.getName(),
+                                    i.getDescription(),
+                                    i.getPrice(),
+                                    new Menu()
+                            )).toList()
                     )).toList()
         );
     }

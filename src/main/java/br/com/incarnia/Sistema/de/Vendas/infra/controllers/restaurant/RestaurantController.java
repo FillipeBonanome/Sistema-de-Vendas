@@ -2,10 +2,14 @@ package br.com.incarnia.Sistema.de.Vendas.infra.controllers.restaurant;
 
 import br.com.incarnia.Sistema.de.Vendas.application.usecases.restaurant.create.CreateRestaurantImplementation;
 import br.com.incarnia.Sistema.de.Vendas.application.usecases.restaurant.read.ReadRestaurantImplementation;
+import br.com.incarnia.Sistema.de.Vendas.core.domain.Menu;
+import br.com.incarnia.Sistema.de.Vendas.core.domain.MenuItem;
 import br.com.incarnia.Sistema.de.Vendas.core.domain.Restaurant;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/restaurants")
@@ -31,7 +35,8 @@ public class RestaurantController {
     @GetMapping("/{id}")
     public ResponseEntity<ReadRestaurantResponse> findById(@PathVariable(name = "id") Long id) {
         Restaurant restaurant = readRestaurantImplementation.findById(id);
-        return ResponseEntity.ok(restaurantDTOMapper.toReadResponse(restaurant));
+        ReadRestaurantResponse response = restaurantDTOMapper.toReadResponse(restaurant);
+        return ResponseEntity.ok(response);
     }
 
 }

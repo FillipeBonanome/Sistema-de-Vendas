@@ -14,7 +14,7 @@ class MenuItemTest {
 
     @Test
     @DisplayName("Should create menu item successfully with valid data")
-    public void shouldCreateMenuItemSuccessfullyWithValiData() {
+    public void shouldCreateMenuItemSuccessfullyWithValidData() {
         assertDoesNotThrow(() -> {
             new MenuItem(
                     1L,
@@ -84,6 +84,15 @@ class MenuItemTest {
     }
 
     @Test
+    @DisplayName("Should throw when price is null")
+    public void shouldThrowWhenPriceIsNull() {
+        MenuItem menuItem = new MenuItem();
+        assertThrows(MenuItemException.class, () -> {
+            menuItem.setPrice(null);
+        });
+    }
+
+    @Test
     @DisplayName("Should update name successfully")
     public void shouldUpdateNameSuccessfully() {
         MenuItem menuItem = new MenuItem();
@@ -111,11 +120,21 @@ class MenuItemTest {
     }
 
     @Test
-    @DisplayName("Should update description successfully with null")
-    public void shouldUpdateDescriptionSuccessfullyWithNull() {
+    @DisplayName("Should throw when description is null")
+    public void shouldThrowWhenDescriptionIsNull() {
         MenuItem menuItem = new MenuItem();
-        menuItem.setDescription(null);
-        assertNull(menuItem.getDescription());
+        assertThrows(MenuItemException.class, () -> {
+           menuItem.setDescription(null);
+        });
+    }
+
+    @Test
+    @DisplayName("Should throw when description is blank")
+    public void shouldThrowWhenDescriptionIsBlank() {
+        MenuItem menuItem = new MenuItem();
+        assertThrows(MenuItemException.class, () -> {
+            menuItem.setDescription("");
+        });
     }
 
     @Test

@@ -4,6 +4,7 @@ import br.com.incarnia.Sistema.de.Vendas.application.usecases.menu.create.Create
 import br.com.incarnia.Sistema.de.Vendas.application.usecases.menu.read.ReadMenuImplementation;
 import br.com.incarnia.Sistema.de.Vendas.application.usecases.restaurant.read.ReadRestaurantImplementation;
 import br.com.incarnia.Sistema.de.Vendas.core.domain.Menu;
+import br.com.incarnia.Sistema.de.Vendas.core.domain.MenuItem;
 import br.com.incarnia.Sistema.de.Vendas.core.domain.Restaurant;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,8 +38,9 @@ public class MenuController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CreateMenuResponse> findById(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<ReadMenuResponse> findById(@PathVariable(name = "id") Long id) {
         Menu menu = readMenuImplementation.findById(id);
-        return ResponseEntity.ok(menuDTOMapper.toResponse(menu));
+        ReadMenuResponse response = menuDTOMapper.toReadResponse(menu);
+        return ResponseEntity.ok(response);
     }
 }

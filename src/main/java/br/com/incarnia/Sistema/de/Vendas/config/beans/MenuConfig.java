@@ -6,6 +6,7 @@ import br.com.incarnia.Sistema.de.Vendas.application.usecases.menu.read.ReadMenu
 import br.com.incarnia.Sistema.de.Vendas.infra.controllers.menu.MenuDTOMapper;
 import br.com.incarnia.Sistema.de.Vendas.infra.gateways.menu.MenuEntityMapper;
 import br.com.incarnia.Sistema.de.Vendas.infra.gateways.menu.MenuRepositoryGateway;
+import br.com.incarnia.Sistema.de.Vendas.infra.gateways.menuitem.MenuItemEntityMapper;
 import br.com.incarnia.Sistema.de.Vendas.infra.gateways.restaurant.RestaurantEntityMapper;
 import br.com.incarnia.Sistema.de.Vendas.infra.persistence.menu.MenuRepository;
 import org.springframework.context.annotation.Bean;
@@ -30,8 +31,8 @@ public class MenuConfig {
     }
 
     @Bean
-    public MenuEntityMapper menuEntityMapper(RestaurantEntityMapper restaurantEntityMapper) {
-        return new MenuEntityMapper(restaurantEntityMapper);
+    public MenuEntityMapper menuEntityMapper(RestaurantEntityMapper restaurantEntityMapper, MenuItemEntityMapper menuItemEntityMapper) {
+        return new MenuEntityMapper(restaurantEntityMapper, menuItemEntityMapper);
     }
 
     @Bean

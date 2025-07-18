@@ -61,10 +61,16 @@ public class MenuItem {
 
     public void setDescription(String description) {
 
-        if(description != null) {
-            if(description.length() > 255) {
-                throw new MenuItemException("Menu description cannot exceed 255 characters");
-            }
+        if(description == null) {
+            throw new MenuItemException("Menu item description cannot be null");
+        }
+
+        if(description.isBlank()) {
+            throw new MenuItemException("Menu item description cannot be blank");
+        }
+
+        if(description.length() > 255) {
+            throw new MenuItemException("Menu description cannot exceed 255 characters");
         }
 
         this.description = description;
@@ -75,6 +81,10 @@ public class MenuItem {
     }
 
     public void setPrice(BigDecimal price) {
+
+        if(price == null) {
+            throw new MenuItemException("Menu item price cannot be null");
+        }
 
         if(price.compareTo(BigDecimal.ZERO) <= 0) {
             throw new MenuItemException("Menu item price cannot be zero or negative");
